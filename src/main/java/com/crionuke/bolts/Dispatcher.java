@@ -32,15 +32,6 @@ public class Dispatcher {
         bolts.add(bolt);
     }
 
-    public boolean unsubscribe(Bolt bolt, Object topic) {
-        List<Bolt> bolts = subscriptions.get(topic);
-        if (bolts != null) {
-            return bolts.remove(bolt);
-        } else {
-            return false;
-        }
-    }
-
     public void dispatch(Event event) throws InterruptedException {
         dispatch(event, event.getClass());
     }

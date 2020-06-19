@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
+ * Dispatcher collect subscriptions and used to delivery events
+ *
  * @author Kirill Byvshev (k@byv.sh)
  * @since 1.0.0
  */

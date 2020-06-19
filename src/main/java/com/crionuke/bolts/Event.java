@@ -1,6 +1,8 @@
 package com.crionuke.bolts;
 
 /**
+ * Base class for events
+ *
  * @author Kirill Byvshev (k@byv.sh)
  * @since 1.0.0
  */

@@ -3,6 +3,8 @@ package com.crionuke.bolts;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * Base class for workers
+ *
  * @author Kirill Byvshev (k@byv.sh)
  * @since 1.0.0
  */

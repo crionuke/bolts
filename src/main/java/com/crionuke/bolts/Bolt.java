@@ -8,6 +8,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Bolt is worker that consume, handle and produce events
+ *
  * @author Kirill Byvshev (k@byv.sh)
  * @since 1.0.0
  */

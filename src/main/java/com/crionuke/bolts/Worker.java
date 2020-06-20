@@ -32,13 +32,16 @@ public abstract class Worker implements Runnable {
         if (prefix == null) {
             throw new NullPointerException();
         }
-        oldName = Thread.currentThread().getName();
-        Thread.currentThread().setName(prefix + "-" + uid);
+        if (oldName == null) {
+            oldName = Thread.currentThread().getName();
+            Thread.currentThread().setName(prefix + "-" + uid);
+        }
     }
 
     protected void resetThreadName() {
         if (oldName != null) {
             Thread.currentThread().setName(oldName);
+            oldName = null;
         }
     }
 }

@@ -4,12 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
+
     <groupId>com.crionuke.bolts</groupId>
     <artifactId>bolts</artifactId>
     <version>1.0.0</version>
+    <packaging>jar</packaging>
 
     <name>bolts</name>
     <description>Bolts are workers that consume, handle and produce events</description>
+    <url>https://github.com/crionuke/bolts</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,8 +29,15 @@
         <license>
             <name>MIT License</name>
             <url>https://raw.githubusercontent.com/crionuke/bolts/master/LICENSE</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/crionuke/bolts.git</connection>
+        <developerConnection>scm:git:git://github.com/crionuke/bolts.git</developerConnection>
+        <url>https://github.com/crionuke/bolts/tree/master</url>
+    </scm>
 
     <developers>
         <developer>
@@ -31,12 +46,6 @@
             <email>k@byv.sh</email>
         </developer>
     </developers>
-
-    <scm>
-        <connection>scm:git:git://github.com/crionuke/bolts.git</connection>
-        <developerConnection>scm:git:git@github.com:crionuke/bolts.git</developerConnection>
-        <url>https://github.com/crionuke/bolts/tree/master</url>
-    </scm>
 
     <dependencies>
         <dependency>
@@ -95,6 +104,23 @@
             <plugin>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.7.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <passphrase>${gpg.passphrase}</passphrase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

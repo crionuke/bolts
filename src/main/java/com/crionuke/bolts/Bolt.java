@@ -57,7 +57,8 @@ public abstract class Bolt extends Worker {
         Thread.currentThread().setName(oldThreadName);
     }
 
-    void fireEvent(Event event) throws InterruptedException {
+    boolean fireEvent(Event event) throws InterruptedException {
         inputQueue.put(event);
+        return true;
     }
 }

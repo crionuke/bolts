@@ -23,28 +23,34 @@ public class Dispatcher {
         subscriptions = new ConcurrentHashMap<>();
     }
 
-    public void subscribe(Bolt bolt, Object topic) {
+    public boolean subscribe(Bolt bolt, Object topic) {
         List<Bolt> bolts = subscriptions.get(topic);
         if (bolts == null) {
             bolts = new CopyOnWriteArrayList<>();
             subscriptions.put(topic, bolts);
         }
-        bolts.add(bolt);
+        if (!bolts.contains(bolt)) {
+            return bolts.add(bolt);
+        } else {
+            return false;
+        }
     }
 
-    public void dispatch(Event event) throws InterruptedException {
-        dispatch(event, event.getClass());
+    public boolean dispatch(Event event) throws InterruptedException {
+        return dispatch(event, event.getClass());
     }
 
-    public void dispatch(Event event, Object topic) throws InterruptedException {
+    public boolean dispatch(Event event, Object topic) throws InterruptedException {
+        boolean changed = false;
         List<Bolt> bolts = subscriptions.get(topic);
         if (bolts != null) {
             if (logger.isTraceEnabled()) {
                 logger.trace("Dispatch {} to {}", event, bolts);
             }
             for (Bolt bolt : bolts) {
-                bolt.fireEvent(event);
+                changed |= bolt.fireEvent(event);
             }
         }
+        return changed;
     }
 }

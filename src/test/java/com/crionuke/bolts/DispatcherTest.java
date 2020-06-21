@@ -43,6 +43,14 @@ public class DispatcherTest extends Assert {
         assertFalse(result);
     }
 
+    @Test
+    public void testTopic() throws InterruptedException {
+        boolean subscribeResult = dispatcher.subscribe(testBolt, "test-topic");
+        assertTrue(subscribeResult);
+        boolean dispatchResult = dispatcher.dispatch(new TestEvent(), "test-topic");
+        assertTrue(dispatchResult);
+    }
+
     class TestBolt extends Bolt implements TestHandler {
 
         public TestBolt() {

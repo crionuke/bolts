@@ -31,8 +31,8 @@ public class DispatcherTest extends Assert {
 
     @Test
     public void testSubscribeAndDispatch() throws InterruptedException {
-        boolean subscribeResultt = dispatcher.subscribe(testBolt, TestEvent.class);
-        assertTrue(subscribeResultt);
+        boolean subscribeResult = dispatcher.subscribe(testBolt, TestEvent.class);
+        assertTrue(subscribeResult);
         boolean dispatchResult = dispatcher.dispatch(new TestEvent());
         assertTrue(dispatchResult);
     }

@@ -32,7 +32,8 @@ public abstract class Bolt extends Worker {
 
     @Override
     public void run() {
-        setThreadNamePrefix(name);
+        String oldThreadName = Thread.currentThread().getName();
+        Thread.currentThread().setName(name + "-" + uid);
         logger.info("{} started", this);
         try {
             looping = true;
@@ -53,7 +54,7 @@ public abstract class Bolt extends Worker {
             logger.debug("{} interrupted", this);
         }
         logger.info("{} finished", this);
-        resetThreadName();
+        Thread.currentThread().setName(oldThreadName);
     }
 
     void fireEvent(Event event) throws InterruptedException {

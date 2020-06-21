@@ -13,7 +13,6 @@ public abstract class Worker implements Runnable {
 
     protected final Long uid;
     protected volatile boolean looping;
-    private String oldName;
 
     public Worker() {
         uid = uidCounter.incrementAndGet();
@@ -26,22 +25,5 @@ public abstract class Worker implements Runnable {
 
     public void finish() {
         looping = false;
-    }
-
-    protected void setThreadNamePrefix(String prefix) {
-        if (prefix == null) {
-            throw new NullPointerException();
-        }
-        if (oldName == null) {
-            oldName = Thread.currentThread().getName();
-            Thread.currentThread().setName(prefix + "-" + uid);
-        }
-    }
-
-    protected void resetThreadName() {
-        if (oldName != null) {
-            Thread.currentThread().setName(oldName);
-            oldName = null;
-        }
     }
 }

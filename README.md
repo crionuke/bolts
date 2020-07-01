@@ -1,6 +1,6 @@
 bolts
 ====
-It's library implement idea of bolts - workers that consume, handle and produce events.
+It's. java library implement idea of bolts - workers that consume, handle and produce events.
 
 You can pull it from the central Maven repositories:
 ```xml
@@ -11,7 +11,4 @@ You can pull it from the central Maven repositories:
 </dependency>
 ```
 
-License
--------
-This code is under the [MIT Licence](https://raw.githubusercontent.com/crionuke/bolts/master/LICENSE).
-
+At this moment no documentation, only [example](https://github.com/crionuke/bolts/tree/master/examples/udp-echo-server) available

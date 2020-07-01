@@ -1,6 +1,6 @@
 bolts
 ====
-It's. java library implement idea of bolts - workers that consume, handle and produce events.
+It's java library implement idea of bolts - workers that consume, handle and produce events.
 
 You can pull it from the central Maven repositories:
 ```xml

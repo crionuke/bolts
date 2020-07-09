@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public abstract class Worker implements Runnable {
     static private final AtomicLong uidCounter = new AtomicLong();
 
-    protected final Long uid;
+    protected final long uid;
     protected volatile boolean looping;
 
     public Worker() {
@@ -25,5 +25,9 @@ public abstract class Worker implements Runnable {
 
     public void finish() {
         looping = false;
+    }
+
+    public long getUid() {
+        return uid;
     }
 }

@@ -6,7 +6,7 @@
 
     <groupId>com.crionuke.bolts.example</groupId>
     <artifactId>udp-echo-server</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>udp-echo-server</name>
     <description>Example implementation of udp echo server powered by bolts</description>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.crionuke.bolts</groupId>
             <artifactId>bolts</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

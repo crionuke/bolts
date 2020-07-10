@@ -23,6 +23,10 @@ public class Dispatcher {
         subscriptions = new ConcurrentHashMap<>();
     }
 
+    public boolean subscribe(Bolt bolt) {
+        return subscribe(bolt, bolt);
+    }
+
     public boolean subscribe(Bolt bolt, Object topic) {
         List<Bolt> bolts = subscriptions.get(topic);
         if (bolts == null) {

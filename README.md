@@ -7,6 +7,6 @@ You can pull it from the central Maven repositories:
 <dependency>
   <groupId>com.crionuke.bolts</groupId>
   <artifactId>bolts</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```

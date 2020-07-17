@@ -45,16 +45,19 @@ public class Dispatcher {
     }
 
     public boolean dispatch(Event event, Object topic) throws InterruptedException {
-        boolean changed = false;
+        boolean dispatched = false;
         List<Bolt> bolts = subscriptions.get(topic);
         if (bolts != null) {
             if (logger.isTraceEnabled()) {
                 logger.trace("Dispatch {} to {}", event, bolts);
             }
             for (Bolt bolt : bolts) {
-                changed |= bolt.fireEvent(event);
+                dispatched |= bolt.fireEvent(event);
             }
         }
-        return changed;
+        if (!dispatched && logger.isInfoEnabled()) {
+            logger.info("{} not dispatched, are there subscribers exist?", event);
+        }
+        return dispatched;
     }
 }
